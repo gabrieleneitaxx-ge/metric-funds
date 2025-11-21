@@ -1,0 +1,135 @@
+/* Define the pulsing effect for the logo */
+@keyframes pulseColor {
+    0% { color: #fff; transform: scale(1); }
+    50% { color: #40a9ff; transform: scale(1.02); text-shadow: 0 0 10px rgba(64, 169, 255, 0.5); }
+    100% { color: #fff; transform: scale(1); }
+}
+
+/* Basic Reset and Container */
+body {
+    /* Set a dark background for the body */
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    /* --- CRITICAL UPDATE: SUBTLE DARK GRADIENT BACKGROUND --- */
+    background-image: linear-gradient(135deg, #101010 0%, #1a1a1a 100%); 
+    color: #f0f0f0; /* Light text globally */
+}
+
+.container {
+    /* Increased width for a more spacious feel */
+    max-width: 1300px; 
+    margin: 40px auto;
+    padding: 30px; /* Increased padding */
+    background-color: #2c2c2c; /* Slightly lighter dark grey for the main container */
+    /* Stronger, cleaner shadow for contrast on dark background */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+    border-radius: 12px;
+}
+
+.app-header h1 {
+    text-align: center;
+    color: #fff; /* White header text */
+    margin-bottom: 25px;
+    font-size: 36px; /* Larger title */
+    font-weight: 800; /* Extra bold */
+    letter-spacing: -0.5px;
+    border-bottom: 2px solid #444; /* Darker, subtle divider */
+    padding-bottom: 15px;
+}
+
+/* --- ANIMATION STYLES --- */
+.app-header h1 .logo-part-1,
+.app-header h1 .logo-part-2 {
+    display: inline-block;
+    cursor: default; /* Keep the pointer normal */
+    transition: color 0.3s;
+}
+
+.app-header h1 .logo-part-1 {
+    /* Apply animation */
+    animation: pulseColor 4s infinite ease-in-out;
+}
+
+.app-header h1 .logo-part-2 {
+    /* Apply animation with a delay for sequential "wave" effect */
+    animation: pulseColor 4s infinite ease-in-out 0.5s;
+    margin-right: 5px; /* Add a slight gap before the "Dashboard" part */
+}
+/* --- END ANIMATION STYLES --- */
+
+
+/* --- Dashboard Grid Layout --- */
+.dashboard-grid {
+    display: grid;
+    gap: 30px; /* Increased gap */
+    grid-template-columns: 1fr; 
+}
+
+/* Container for Form and Chart */
+.input-and-chart-area {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px; /* Increased gap */
+    grid-column: 1 / -1; 
+}
+
+@media (min-width: 768px) {
+    .input-and-chart-area {
+        grid-template-columns: 1fr 1fr; /* Two columns for form and chart */
+    }
+}
+
+/* --- Placeholders and General Styles --- */
+.chart-container {
+    padding: 20px;
+    background-color: #2c2c2c; /* Dark background for chart area */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    min-height: 200px; 
+}
+
+.chart-container h3 {
+    color: #f0f0f0; /* Ensure chart title is visible */
+}
+
+.chart-placeholder, .no-transactions {
+    text-align: center;
+    color: #888; /* Muted color for placeholders */
+    padding: 20px 0;
+}
+
+/* Mobile specific container padding */
+@media (max-width: 767px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+    .app-header h1 {
+        font-size: 28px;
+    }
+}
+
+/* --- NEW STYLE: Sortable Header for Transaction List --- */
+.sortable-header {
+    cursor: pointer;
+    transition: color 0.2s;
+    /* Uses flex to align the text and the sorting icon/arrow */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sortable-header:hover {
+    color: #40a9ff; /* Bright blue hover effect */
+}
+
+/* Style for the sorting indicator (up/down arrow) */
+.sort-indicator {
+    font-size: 10px;
+    color: #b0b0b0; /* Muted color by default */
+}
+
+/* Highlight the indicator when the column is actively sorted */
+.sortable-header.sorted .sort-indicator {
+    color: #00c49f; /* Green highlight for the active sort */
+}
