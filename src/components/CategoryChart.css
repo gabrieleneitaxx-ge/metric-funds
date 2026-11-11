@@ -1,0 +1,46 @@
+.category-breakdown {
+    margin-top: 20px;
+}
+
+.category-total {
+    color: #f0f0f0;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.category-item {
+    margin-bottom: 20px;
+}
+
+.category-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    color: #f0f0f0;
+    font-size: 14px;
+}
+
+.category-bar-track {
+    width: 100%;
+    height: 9px;
+    background-color: #3e3e3e;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.category-bar-fill {
+    height: 100%;
+    background-color: #40a9ff;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.category-percentage {
+    display: block;
+    text-align: right;
+    color: #b0b0b0;
+    font-size: 12px;
+    margin-top: 5px;
+}
