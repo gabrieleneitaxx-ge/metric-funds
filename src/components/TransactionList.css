@@ -1,45 +1,56 @@
-/* --- Transaction List Container --- */
 .transaction-list-container {
-    grid-column: 1 / -1; /* Span the full width of the dashboard grid */
+    grid-column: 1 / -1;
     margin-top: 20px;
     padding: 0;
-    color: black;
+    color: #f0f0f0;
 }
 
-/* --- Table Styling --- */
+/* Transaction Table */
 .transaction-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
-    background-color: white; 
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background-color: #2c2c2c;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    overflow: hidden; /* Ensures rounded corners look good */
+    overflow: hidden;
 }
 
-.transaction-table th, 
+.transaction-table th,
 .transaction-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #3e3e3e;
 }
 
 .transaction-table th {
-    background-color: #f0f2f5;
+    background-color: #3e3e3e;
     font-weight: 600;
-    color: #555;
+    color: #f0f0f0;
     text-transform: uppercase;
     font-size: 13px;
 }
 
-.transaction-table tr:hover {
-    background-color: Grey;
+.transaction-table tbody tr {
+    transition: background-color 0.2s ease;
 }
 
-/* Conditional Text Colors */
-.type-income { color: #008855; font-weight: 600; }
-.type-expense { color: #ff9900; font-weight: 600; }
+.transaction-table tbody tr:hover {
+    background-color: #383838;
+}
 
+/* Transaction Types */
+.type-income {
+    color: #00c49f;
+    font-weight: 600;
+}
+
+.type-expense {
+    color: #ff6347;
+    font-weight: 600;
+}
+
+/* Amount and Date */
 .amount-col {
     font-weight: bold;
     text-align: right;
@@ -47,32 +58,29 @@
 }
 
 .date-col {
-    color: #888;
+    color: #b0b0b0;
     font-size: 14px;
     min-width: 90px;
 }
 
-/* --- Placeholder Visibility (Stronger Style) --- */
+/* Empty State */
 .no-transactions {
     text-align: center;
-    color: black;
+    color: #b0b0b0;
     padding: 20px 0;
     font-size: 1.1em;
     font-style: italic;
     font-weight: 500;
     border-radius: 4px;
 }
-
-/* --- Action Column and Delete Button Styling --- */
-
-.action-col {
-    width: 1%; /* Keep the column narrow */
-    text-align: center !important; 
+ .action-col {
+    width: 1%;
+    text-align: center !important;
 }
 
 .btn-delete {
-    background: blue; /* Red */
-    color: white;
+    background-color: #ff6347;
+    color: #ffffff;
     border: none;
     border-radius: 4px;
     padding: 4px 8px;
@@ -84,5 +92,27 @@
 }
 
 .btn-delete:hover {
-    background-color: red;
+    background-color: #d94335;
+}
+
+.btn-delete:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+/* Responsive table wrapper */
+.transaction-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Preserve readable table columns on narrow screens */
+.transaction-table {
+    min-width: 700px;
+}
+
+/* Prevent table cells from wrapping unpredictably */
+.transaction-table th,
+.transaction-table td {
+    white-space: nowrap;
 }
